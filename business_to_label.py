@@ -4,37 +4,41 @@ import os
 import numpy as np
 import csv
 X = []
-i = 0 
+i = 0
 photo_id = {}
 buisness_id = {}
-attribute = {} 
+attribute = {}
 new_attribute = {}
+
+
 def photo_to_biz_id():
     with open('train_photo_to_biz_ids.csv') as csvfile:
-        readCSV = csv.reader(csvfile , delimiter = ',')
-        for row in readCSV:    photo_id[row[0]] = row[1] # print row
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            photo_id[row[0]] = row[1]  # print row
     return photo_id
 
-def biz_to_label():    
+
+def biz_to_label():
     with open('Files/train.csv') as csvfile:
-    	readCSV = csv.reader(csvfile , delimiter = ',')
-    	for row in readCSV:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
             x = []
             list_row = list(row[1:])
             for element in list_row:
                 if element == '':
-                    print element , row
+                    print element, row
                     pass
                 else:
                     x.append(element)
 
             try:
-                 buisness_id[row[0]] = x
+                buisness_id[row[0]] = x
 
             except:
-                 buisness_id[row[0]]=  list()
-                 buisness_id[row[0]] = x
-    return buisness_id 
+                buisness_id[row[0]] = list()
+                buisness_id[row[0]] = x
+    return buisness_id
 
 
 '''
